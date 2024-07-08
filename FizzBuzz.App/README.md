@@ -9,8 +9,8 @@ I set out to demonstrate as many core concepts I tend to use on a daily basis in
 4. Async programming
 5. Custom Exceptions
 6. Best practices (like not "leaking" service layer exceptions)
-7. Docker (although I was having trouble with docker + user input into the console)
-8. Testing, with an alternative option with Moq
+7. Docker (although I was having trouble with docker + user input into the console, please see the docker warning below before running it in a container)
+8. Testing (FizzBuzz.Test Project), with an alternative option with Moq
 
 I would have included an exe but i doubt that would make it past the email filter\
 I have included a dockerfile for your convenience.\
