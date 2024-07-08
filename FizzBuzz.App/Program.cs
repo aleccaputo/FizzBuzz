@@ -17,7 +17,7 @@ while (!validInput)
     {
         try
         {
-            FizzBuzz(host.Services, inputtedRange);
+            await FizzBuzz(host.Services, inputtedRange).ConfigureAwait(false);
             validInput = true;
         }
         catch (InvalidFizzBuzzRangeException)
@@ -35,13 +35,13 @@ while (!validInput)
 await host.StopAsync();
 return;
 
-static void FizzBuzz(IServiceProvider serviceProvider, int range)
+static async Task FizzBuzz(IServiceProvider serviceProvider, int range)
 {
     using IServiceScope serviceScope = serviceProvider.CreateScope();
     var provider = serviceScope.ServiceProvider;
     var fizzBuzzService = provider.GetRequiredService<IMultiplesService>();
 
-    var fizzBuzz = fizzBuzzService.Execute(range);
+    var fizzBuzz = await fizzBuzzService.Execute(range).ConfigureAwait(false);
     fizzBuzzService.LogResults(fizzBuzz);
 }
 

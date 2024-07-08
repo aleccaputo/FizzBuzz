@@ -38,7 +38,7 @@ public class FizzBuzzService : IMultiplesService
         _logger.LogInformation("Done logging.");
     }
 
-    public IEnumerable<string> Execute(int range)
+    public Task<IEnumerable<string>> Execute(int range)
     {
         if (range <= 0)
         {
@@ -48,7 +48,7 @@ public class FizzBuzzService : IMultiplesService
         _logger.LogInformation("Creating FizzBuzz results...");
 
         // Demonstrating my preference for Linq, but of course this could be written as a for loop as well.
-        return Enumerable.Range(1, range)
+        var result = Enumerable.Range(1, range)
             .Select(i =>
             {
                 if (i % 3 == 0 && i % 5 == 0)
@@ -68,6 +68,8 @@ public class FizzBuzzService : IMultiplesService
 
                 return i.ToString();
             });
+
+        return Task.FromResult(result);
 
         // I find this too terse for someone to parse at first glance, but it's a cool usage of linq and language features
         /*

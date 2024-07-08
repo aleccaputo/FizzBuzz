@@ -59,7 +59,7 @@ public class FizzBuzzServiceTests
     }
 
     [Test]
-    public void Execute100ReturnsExpectedResult()
+    public async Task Execute100ReturnsExpectedResult()
     {
         // i googled the expected results of 100 iterations
         var expected = new List<string>()
@@ -74,7 +74,7 @@ public class FizzBuzzServiceTests
                 "Fizz", "82", "83", "Fizz", "Buzz", "86", "Fizz", "88", "89", "FizzBuzz",
                 "91", "92", "Fizz", "94", "Buzz", "Fizz", "97", "98", "Fizz", "Buzz" };
 
-        var result = _fizzBuzzService.Execute(100);
+        var result = await _fizzBuzzService.Execute(100).ConfigureAwait(false);
         Assert.That(result, Is.EqualTo(expected));
     }
     

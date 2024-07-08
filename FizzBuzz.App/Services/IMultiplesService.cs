@@ -10,5 +10,5 @@ public interface IMultiplesService
 
     public void LogResults(IEnumerable<string> results);
 
-    public IEnumerable<string> Execute(int range);
+    public Task<IEnumerable<string>> Execute(int range);
 }
